@@ -12,7 +12,7 @@ function loadCommands(client) {
     const commandFiles = fs.readdirSync(`./commands/${folder}`).filter((file) => file.endsWith(".js"));
     for (const file of commandFiles ) {
         const commandFile = require(`../commands/${folder}/${file}`);
-    client.commands.set(commandFile.data.name, commandfile);
+    client.commands.set(commandFile.data.name, commandFile);
 
     commandsArray.push(commandFile.data.toJSON());
 
