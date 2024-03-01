@@ -20,7 +20,15 @@ function loadCommands(client) {
     continue;
     }
   }
-  client.application.commands.set(commandsArray);
+  client.on('ready', async() => {
+    client.guilds.cache.forEach(x => {
+      x.commands.set(commandsArray)
+    })
+  })
+
+  client.on('guildCreate', async(guild) => {
+    guild.commands.send(commandsArray)
+  })
 
 return console.log(table.toString(), "\nloaded commands");
 }
